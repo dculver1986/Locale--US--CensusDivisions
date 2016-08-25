@@ -26,7 +26,7 @@ our @EXPORT_OK = qw( state2division );
     use strict;
     use warnings;
 
-    use Locale::US::CensusDivisions qw(statee2division);
+    use Locale::US::CensusDivisions qw(state2division);
 
     my $division = state2division('TX');
 
