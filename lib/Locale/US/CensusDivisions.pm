@@ -53,7 +53,7 @@ Daniel Culver, C<< perlsufi@cpan.org >>
 
 =head1 ACKNOWLEDGEMENTS
 
-Wikipedia L< https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Census_Bureau-designated_regions_and_divisions >
+Wikipedia L<Census Bureau Divisions|https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Census_Bureau-designated_regions_and_divisions>
 
 HostGator
 
