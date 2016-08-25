@@ -8,7 +8,7 @@ use Exporter;
 use Carp qw(croak);
 
 our @ISA       = qw(Exporter);
-our @EXPORT_OK = qw( code2division );
+our @EXPORT_OK = qw( state2division );
 
 # ABSTRACT: Locale::US::CensusDivisions - module to get US Census Divisions
 # VERSION
@@ -26,9 +26,9 @@ our @EXPORT_OK = qw( code2division );
     use strict;
     use warnings;
 
-    use Locale::US::CensusDivisions qw(code2division);
+    use Locale::US::CensusDivisions qw(statee2division);
 
-    my $division = code2division('TX');
+    my $division = state2division('TX');
 
     print "The division for that state is $division \n";
 
@@ -38,7 +38,7 @@ our @EXPORT_OK = qw( code2division );
 
 =head1 METHODS
 
-=head2 code2division
+=head2 state2division
 
     See Synopsis
 
@@ -76,8 +76,8 @@ our %divisions = (
     9 => [ 'CA', 'WA', 'HI', 'OR', 'AK' ],
 );
 
-sub code2division {
-    my $code = shift || croak 'code2division requires a state code string';
+sub state2division {
+    my $code = shift || croak 'state2division requires a state abbreviation string';
 
     while ( my ($key, $value ) = each %divisions ) {
         if ( (grep { $code eq $_ } @$value ) ) {
@@ -85,11 +85,7 @@ sub code2division {
         }
     }
 
-    foreach my $values (values %divisions ) {
-        if ( !(grep { $code eq $_ } @$values ) ) {
-            croak 'The code you provided was not found';
-        }
-    }
+    croak 'The state abbreviation you provided was not found';
 }
 
 1;
