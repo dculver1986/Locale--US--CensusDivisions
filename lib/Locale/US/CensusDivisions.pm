@@ -10,7 +10,7 @@ our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw( state2division );
 
 # ABSTRACT: Locale::US::CensusDivisions - module to get US Census Divisions
-# VERSION
+# VERSION 1.1.0
 
 =pod
 
@@ -54,13 +54,15 @@ Daniel Culver, C<< perlsufi@cpan.org >>
 
 Wikipedia L<Census Bureau Divisions|https://en.wikipedia.org/wiki/List_of_regions_of_the_United_States#Census_Bureau-designated_regions_and_divisions>
 
-HostGator
+L<HostGator|http://www.hostgator.com>
 
 =head1 CONTRIBUTORS
 
 William Seymour
 
 Doug Schrag
+
+Robert Stone
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -84,10 +86,9 @@ sub state2division {
     my $code = shift
       || croak 'state2division requires a state abbreviation string';
 
-    while ( my ( $key, $value ) = each %divisions ) {
-        if ( ( grep { $code eq $_ } @$value ) ) {
-            keys %divisions;    # reset the iterator
-            return $key;
+    for my $division ( keys %divisions ) {
+        if ( grep { $code eq $_ } @{ $divisions{$division} } ) {
+            return $division;
         }
     }
 

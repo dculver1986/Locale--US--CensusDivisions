@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 
-use Test::Most;
+use Test::More;
+use Test::Exception;
 use Locale::US::CensusDivisions qw(state2division);
 
 my @state_list = qw( AL AK AZ AR CA CO CT DC DE FL GA HI ID IL IN IA KS KY LA ME
@@ -32,7 +33,6 @@ subtest "Check if TX is division 7" => sub {
 };
 
 subtest "Bad state code croaks with error" => sub {
-
     my $state = 'FA';
 
     throws_ok {
