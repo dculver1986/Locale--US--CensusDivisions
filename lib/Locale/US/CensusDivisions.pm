@@ -10,7 +10,7 @@ our @ISA       = qw(Exporter);
 our @EXPORT_OK = qw( state2division );
 
 # ABSTRACT: Locale::US::CensusDivisions - module to get US Census Divisions
-# VERSION
+# VERSION 1.0.0
 
 =pod
 
