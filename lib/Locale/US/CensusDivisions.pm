@@ -56,6 +56,11 @@ Wikipedia L<Census Bureau Divisions|https://en.wikipedia.org/wiki/List_of_region
 
 HostGator
 
+=head1 CONTRIBUTORS
+
+William Seymour
+
+Doug Schrag
 
 =head1 LICENSE AND COPYRIGHT
 
@@ -65,10 +70,10 @@ This module is free software; you can redistribute it and/or modify it under the
 
 our %divisions = (
     1 => [ 'CT', 'ME', 'MA', 'NH', 'RI', 'VT' ],
-    2 => [ 'NJ', 'NY', 'PA'],
+    2 => [ 'NJ', 'NY', 'PA' ],
     3 => [ 'IL', 'IN', 'WI', 'MI', 'OH' ],
-    4 => [ 'MN', 'KS', 'IA','MO', 'NE', 'ND', 'SD'],
-    5 => [ 'DE', 'FL', 'GA', 'MD', 'NC', 'SC', 'VA', 'DC', 'WV'],
+    4 => [ 'MN', 'KS', 'IA', 'MO', 'NE', 'ND', 'SD' ],
+    5 => [ 'DE', 'FL', 'GA', 'MD', 'NC', 'SC', 'VA', 'DC', 'WV' ],
     6 => [ 'AL', 'KY', 'MS', 'TN' ],
     7 => [ 'AR', 'LA', 'OK', 'TX' ],
     8 => [ 'AZ', 'CO', 'ID', 'MT', 'NV', 'NM', 'UT', 'WY', ],
@@ -76,11 +81,12 @@ our %divisions = (
 );
 
 sub state2division {
-    my $code = shift || croak 'state2division requires a state abbreviation string';
+    my $code = shift
+      || croak 'state2division requires a state abbreviation string';
 
-    while ( my ($key, $value ) = each %divisions ) {
-        if ( (grep { $code eq $_ } @$value ) ) {
-            keys %divisions;  # reset the iterator
+    while ( my ( $key, $value ) = each %divisions ) {
+        if ( ( grep { $code eq $_ } @$value ) ) {
+            keys %divisions;    # reset the iterator
             return $key;
         }
     }
