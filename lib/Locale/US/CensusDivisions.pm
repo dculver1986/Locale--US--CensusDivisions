@@ -4,7 +4,6 @@ use strict;
 use warnings;
 
 use Exporter;
-
 use Carp qw(croak);
 
 our @ISA       = qw(Exporter);
@@ -81,11 +80,12 @@ sub state2division {
 
     while ( my ($key, $value ) = each %divisions ) {
         if ( (grep { $code eq $_ } @$value ) ) {
+            keys %divisions;  # reset the iterator
             return $key;
         }
     }
 
-    croak 'The state abbreviation you provided was not found';
+    croak "The state abbreviation ($code) you provided was not found";
 }
 
 1;
